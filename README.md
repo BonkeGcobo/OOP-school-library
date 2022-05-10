@@ -1,19 +1,13 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# School-library
 
-> Description the project.
+> This for Educational purposes
 
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
-
-## Live Demo (if available)
-
-[Live Demo Link](https://livedemo.com)
+- Ruby
 
 
 ## Getting Started
@@ -23,34 +17,17 @@
 
 
 To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
-
+git clone https://github.com/BonkeGcobo/OOP-school-library.git
+cd OOP-SCHOOL-libray
 
 ## Authors
 
-👤 **Author1**
+👤 **Bonke Gcobo**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@bonkegcbo](https://github.com/bonkegcobo)
+- Twitter: [@bonkegcobo](https://twitter.com/bonkegcobo)
+- LinkedIn: [@bonkegcobo](https://linkedin.com/in/bonkegcobo)
 
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
 ## 🤝 Contributing
 
