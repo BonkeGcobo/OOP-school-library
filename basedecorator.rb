@@ -1,5 +1,5 @@
 require './nameable.rb'
-class Base < Nameable
+class BaseDecorator < Nameable
   def initialize(nameable)
     @nameable = nameable
   end
