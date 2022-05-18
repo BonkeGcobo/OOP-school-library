@@ -1,3 +1,4 @@
+require './rental.rb'
 class Book
   attr_accessor :title
   attr_accessor :author
@@ -5,5 +6,6 @@ class Book
   def initialize(title, author)
     @title = title
     @author = author
+    @rentals = []
   end
 end
