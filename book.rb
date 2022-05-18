@@ -1,5 +1,5 @@
 require './rental'
-require './person.rb'
+require './person'
 class Book
   attr_accessor :title, :author
   attr_reader :rentals
