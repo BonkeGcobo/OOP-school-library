@@ -1,6 +1,8 @@
 require './student'
 require './teacher'
 require './book'
+require './rental.rb'
+require 'pry'
 class App
   attr_reader :people
 
@@ -94,7 +96,17 @@ class App
     }
     book = gets.chomp
 
-  
+    puts "Select a person from the following list by number [not ID]"
+    @people.each_with_index{
+      |person, index|
+      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}" , "\n"
+    }
+    person = gets.chomp
+    print "Date: "
+    date = gets.chomp
+    rental = Rental.new(date, @books[book.to_i], @people[person.to_i])
+    puts "Rental Created Successfully"
+    binding.pry
   end
 
 end
