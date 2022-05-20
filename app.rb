@@ -66,7 +66,7 @@ class App
 
   def list_people
     @people.each do |person|
-      print person.name, ' ', person.class, "\n"
+      puts "[#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}" , "\n"
     end
   end
 
@@ -85,6 +85,18 @@ class App
       print "Title: #{book.title} Author: #{book.author}", "\n"
     end
   end
+
+  def create_rental
+    puts "Select a book from the following list by number"
+    @books.each_with_index{
+      |book, index|
+      print "#{index}) Title: #{book.title} Author: #{book.author}", "\n"
+    }
+    book = gets.chomp
+
+  
+  end
+
 end
 app = App.new
 app.run
