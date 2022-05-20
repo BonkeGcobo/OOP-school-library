@@ -18,8 +18,24 @@ class App
       puts '6- List all rentals for a given id'
       puts '7- Exit'
       input = gets.chomp
-      create_person if input == '3'
-      list_people if input == '2'
+      user_interactions(input)
+    end
+  end
+
+  def user_interactions(user_input)
+    case user_input
+    when '1'
+      list_books
+    when '2'
+      list_people
+    when '3'
+      create_person
+    when '4'
+      create_book
+    when '5'
+      create_rental
+    when '6'
+      list_rentals
     end
   end
 
@@ -47,10 +63,9 @@ class App
   end
 
   def list_people
-    @people.each{
-      | person |
-      print  person.name," ", person.class , "\n"
-    }
+    @people.each do |person|
+      print person.name, ' ', person.class, "\n"
+    end
   end
 end
 app = App.new
