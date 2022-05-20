@@ -8,6 +8,6 @@ class Student < Person
   end
 
   def play_hooky
-    "¯\(ツ)/¯"
+    "DREAM BUG"
   end
 end
