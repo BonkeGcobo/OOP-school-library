@@ -1,6 +1,6 @@
 require './student'
 require './teacher'
-require './book.rb'
+require './book'
 class App
   attr_reader :people
 
@@ -71,20 +71,19 @@ class App
   end
 
   def create_book
-    print "Title: "
+    print 'Title: '
     title = gets.chomp
-    print "Author: "
+    print 'Author: '
     author = gets.chomp
     book = Book.new(title, author)
     @books.push(book)
-    puts "Book created successfully"
+    puts 'Book created successfully'
   end
 
   def list_books
-    @books.each{
-      |book|
-      print "Title: #{book.title}"+" "+ "Author: #{book.author}", "\n"
-    }
+    @books.each do |book|
+      print "Title: #{book.title} Author: #{book.author}", "\n"
+    end
   end
 end
 app = App.new
