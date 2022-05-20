@@ -79,6 +79,13 @@ class App
     @books.push(book)
     puts "Book created successfully"
   end
+
+  def list_books
+    @books.each{
+      |book|
+      print "Title: #{book.title}"+" "+ "Author: #{book.author}", "\n"
+    }
+  end
 end
 app = App.new
 app.run
