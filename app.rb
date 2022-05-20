@@ -19,6 +19,7 @@ class App
       puts '7- Exit'
       input = gets.chomp
       create_person if input == '3'
+      list_people if input == '2'
     end
   end
 
@@ -43,6 +44,13 @@ class App
       @people.push(person)
     end
     puts 'Person created successfully'
+  end
+
+  def list_people
+    @people.each{
+      | person |
+      print  person.name," ", person.class , "\n"
+    }
   end
 end
 app = App.new
