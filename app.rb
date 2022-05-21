@@ -1,8 +1,7 @@
 require './student'
 require './teacher'
 require './book'
-require './rental.rb'
-require 'pry'
+require './rental'
 class App
   attr_reader :people
 
@@ -69,7 +68,7 @@ class App
 
   def list_people
     @people.each do |person|
-      puts "[#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}" , "\n"
+      puts "[#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}", "\n"
     end
   end
 
@@ -90,38 +89,30 @@ class App
   end
 
   def create_rental
-    puts "Select a book from the following list by number"
-    @books.each_with_index{
-      |book, index|
+    puts 'Select a book from the following list by number'
+    @books.each_with_index do |book, index|
       print "#{index}) Title: #{book.title} Author: #{book.author}", "\n"
-    }
+    end
     book = gets.chomp
 
-    puts "Select a person from the following list by number [not ID]"
-    @people.each_with_index{
-      |person, index|
-      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}" , "\n"
-    }
+    puts 'Select a person from the following list by number [not ID]'
+    @people.each_with_index do |person, index|
+      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}", "\n"
+    end
     person = gets.chomp
-    print "Date: "
+    print 'Date: '
     date = gets.chomp
     rental = Rental.new(date, @books[book.to_i], @people[person.to_i])
     @rentals.push(rental)
-    puts "Rental Created Successfully"
+    puts 'Rental Created Successfully'
   end
 
   def list_rentals
-    puts "Enter the person ID:"
+    puts 'Enter the person ID:'
     id = gets.chomp
-    puts "Rentals:"
-    @rentals.each {
-      |rental| 
-      if(rental.person.find_id == id.to_i)
-        puts "Data #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
-      end
-    }
+    puts 'Rentals:'
+    @rentals.each do |rental|
+      puts "Data #{rental.date}, Book #{rental.book.title} by #{rental.book.author}" if rental.person.find_id == id.to_i
+    end
   end
-
 end
-app = App.new
-app.run
