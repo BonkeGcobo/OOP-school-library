@@ -9,6 +9,7 @@ class App
   def initialize
     @people = []
     @books = []
+    @rentals = []
   end
 
   def run
@@ -105,8 +106,20 @@ class App
     print "Date: "
     date = gets.chomp
     rental = Rental.new(date, @books[book.to_i], @people[person.to_i])
+    @rentals.push(rental)
     puts "Rental Created Successfully"
-    binding.pry
+  end
+
+  def list_rentals
+    puts "Enter the person ID:"
+    id = gets.chomp
+    puts "Rentals:"
+    @rentals.each {
+      |rental| 
+      if(rental.person.find_id == id.to_i)
+        puts "Data #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
+      end
+    }
   end
 
 end
