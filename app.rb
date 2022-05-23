@@ -5,12 +5,13 @@ require './rental'
 require './main_inputs'
 require './handle_create'
 require './handle_list'
-
+require './display.rb'
 class App
   attr_reader :people
   include Inputs
   include HandleCreate
   include HandleList 
+  include Display
 
   def initialize
     @people = []
@@ -21,13 +22,7 @@ class App
   def run
     input = ''
     while input != '7'
-      puts '1- List all books'
-      puts '2- List all people'
-      puts '3- Create a person'
-      puts '4- Create a book'
-      puts '5- Create a rental'
-      puts '6- List all rentals for a given id'
-      puts '7- Exit'
+      menu_items
       input = gets.chomp
       user_interactions(input)
     end
@@ -64,15 +59,11 @@ class App
 
   def create_rental
     puts 'Select a book from the following list by number'
-    @books.each_with_index do |book, index|
-      print "#{index}) Title: #{book.title} Author: #{book.author}", "\n"
-    end
+    handle_list(@books)
     book = gets.chomp
 
     puts 'Select a person from the following list by number [not ID]'
-    @people.each_with_index do |person, index|
-      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}", "\n"
-    end
+    handle_list(@people)
     person = gets.chomp
     print 'Date: '
     date = gets.chomp
