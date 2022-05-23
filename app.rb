@@ -4,10 +4,13 @@ require './book'
 require './rental'
 require './main_inputs'
 require './handle_create'
+require './handle_list'
+
 class App
   attr_reader :people
   include Inputs
   include HandleCreate
+  include HandleList 
 
   def initialize
     @people = []
@@ -47,9 +50,7 @@ class App
   end
 
   def list_people
-    @people.each do |person|
-      puts "[#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}", "\n"
-    end
+    handle_list(@people)
   end
 
   def create_book
@@ -58,9 +59,7 @@ class App
   end
 
   def list_books
-    @books.each do |book|
-      print "Title: #{book.title} Author: #{book.author}", "\n"
-    end
+    handle_list(@books)
   end
 
   def create_rental
@@ -86,8 +85,6 @@ class App
     puts 'Enter the person ID:'
     id = gets.chomp
     puts 'Rentals:'
-    @rentals.each do |rental|
-      puts "Data #{rental.date}, Book #{rental.book.title} by #{rental.book.author}" if rental.person.find_id == id.to_i
-    end
+    handle_list(@rentals, id)
   end
 end
