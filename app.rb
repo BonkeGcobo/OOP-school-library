@@ -42,19 +42,7 @@ class App
     age = gets.chomp
     print 'Name: '
     name = gets.chomp
-    case num_input
-    when '1'
-      print 'Has parent permission [Y/N]: '
-      permission_input = gets.chomp.downcase
-      permission = permission_input != 'n'
-      person = Student.new(age, nil, name, parent_permission: permission)
-      @people.push(person)
-    when '2'
-      print 'Specialization: '
-      special = gets.chomp
-      person = Teacher.new(age, special, name)
-      @people.push(person)
-    end
+    person_create(num_input, age, name)
     puts 'Person created successfully'
   end
 
