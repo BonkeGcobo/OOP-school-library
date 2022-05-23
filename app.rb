@@ -2,8 +2,10 @@ require './student'
 require './teacher'
 require './book'
 require './rental'
+require './main_inputs'
 class App
   attr_reader :people
+  include Inputs
 
   def initialize
     @people = []
@@ -26,21 +28,9 @@ class App
     end
   end
 
-  def user_interactions(user_input)
-    case user_input
-    when '1'
-      list_books
-    when '2'
-      list_people
-    when '3'
-      create_person
-    when '4'
-      create_book
-    when '5'
-      create_rental
-    when '6'
-      list_rentals
-    end
+  def user_interactions(client_input)
+    Inputs.user_input(client_input)
+
   end
 
   def create_person
