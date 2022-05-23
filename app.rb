@@ -3,9 +3,11 @@ require './teacher'
 require './book'
 require './rental'
 require './main_inputs'
+require './handle_create'
 class App
   attr_reader :people
   include Inputs
+  include HandleCreate
 
   def initialize
     @people = []
@@ -29,7 +31,7 @@ class App
   end
 
   def user_interactions(client_input)
-    Inputs.user_input(client_input)
+    user_input(client_input)
 
   end
 
@@ -63,12 +65,7 @@ class App
   end
 
   def create_book
-    print 'Title: '
-    title = gets.chomp
-    print 'Author: '
-    author = gets.chomp
-    book = Book.new(title, author)
-    @books.push(book)
+    book_create
     puts 'Book created successfully'
   end
 
