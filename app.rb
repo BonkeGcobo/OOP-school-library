@@ -5,12 +5,13 @@ require './rental'
 require './main_inputs'
 require './handle_create'
 require './handle_list'
-require './display.rb'
+require './display'
 class App
   attr_reader :people
+
   include Inputs
   include HandleCreate
-  include HandleList 
+  include HandleList
   include Display
 
   def initialize
@@ -30,7 +31,6 @@ class App
 
   def user_interactions(client_input)
     user_input(client_input)
-
   end
 
   def create_person

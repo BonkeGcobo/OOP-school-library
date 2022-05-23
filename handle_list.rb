@@ -1,16 +1,18 @@
-module HandleList 
-  def handle_list(listItems, id=0)
-    if listItems == @people
-      listItems.each_with_index do |person, index|
-      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}", "\n"
+module HandleList
+  def handle_list(list_items, id = 0)
+    if list_items == @people
+      list_items.each_with_index do |person, index|
+        puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}", "\n"
       end
-    elsif listItems == @books
-      listItems.each_with_index do |book, index|
-      print "#{index}) Title: #{book.title} Author: #{book.author}", "\n"
+    elsif list_items == @books
+      list_items.each_with_index do |book, index|
+        print "#{index}) Title: #{book.title} Author: #{book.author}", "\n"
       end
-    else 
-      listItems.each do |rental|
-      puts "Data #{rental.date}, Book #{rental.book.title} by #{rental.book.author}" if rental.person.find_id == id.to_i
+    else
+      list_items.each do |rental|
+        if rental.person.find_id == id.to_i
+          puts "Data #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
+        end
       end
     end
   end
