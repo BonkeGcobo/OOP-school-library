@@ -33,8 +33,4 @@ module Inputs
       list_rentals
     end
   end
-
-  def num_input
-
-  end
 end

@@ -30,7 +30,7 @@ class App
   end
 
   def user_interactions
-  interactions
+    interactions
   end
 
   def create_person

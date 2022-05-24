@@ -11,13 +11,13 @@ module HandleList
     end
   end
 
-  def rental_list 
+  def rental_list
     id = gets.chomp
     puts 'Rentals:'
     @rentals.each do |rental|
-        if rental.person.find_id == id.to_i
-          puts "Data #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
-        end
+      if rental.person.find_id == id.to_i
+        puts "Data #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
       end
+    end
   end
 end

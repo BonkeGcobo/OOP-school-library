@@ -41,7 +41,7 @@ module HandleCreate
 
     puts 'Select a person from the following list by number [not ID]'
     @people.each_with_index do |person, index|
-        puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}", "\n"
+      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}", "\n"
     end
     person = gets.chomp
     print 'Date: '
