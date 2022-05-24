@@ -6,6 +6,7 @@ require './main_inputs'
 require './handle_create'
 require './handle_list'
 require './display'
+require './data'
 
 class App
   attr_reader :people
@@ -14,6 +15,7 @@ class App
   include HandleCreate
   include HandleList
   include Display
+  include Data
 
   def initialize
     @people = []
@@ -27,6 +29,11 @@ class App
       menu_items
       input = gets.chomp
       user_interactions(input)
+      if(input =='7')
+        save_data(@books,'book')
+        save_data(@rentals, 'rental')
+        save_data(@people, 'people')
+      end
     end
   end
 
