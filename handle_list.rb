@@ -16,7 +16,7 @@ module HandleList
     puts 'Rentals:'
     @rentals.each do |rental|
       rental.person.find_id == id.to_i
-        puts "Data #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
+      puts "Data #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
     end
   end
 end
