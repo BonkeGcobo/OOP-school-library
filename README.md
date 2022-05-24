@@ -28,6 +28,11 @@ cd OOP-SCHOOL-libray
 - Twitter: [@bonkegcobo](https://twitter.com/bonkegcobo)
 - LinkedIn: [@bonkegcobo](https://linkedin.com/in/bonkegcobo)
 
+👤 **David Ouma**
+
+- GitHub: [@daudi13](https://github.com/@daudi13)
+- Twitter: [@davouma](https://twitter.com/davouma)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
 ## 🤝 Contributing
 
