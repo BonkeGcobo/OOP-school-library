@@ -32,4 +32,21 @@ module HandleCreate
       @people.push(person)
     end
   end
+
+  def rental_create
+    @books.each_with_index do |book, index|
+      print "#{index}) Title: #{book.title} Author: #{book.author}", "\n"
+    end
+    book = gets.chomp
+
+    puts 'Select a person from the following list by number [not ID]'
+    @people.each_with_index do |person, index|
+        puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}", "\n"
+    end
+    person = gets.chomp
+    print 'Date: '
+    date = gets.chomp
+    rental = Rental.new(date, @books[book.to_i], @people[person.to_i])
+    @rentals.push(rental)
+  end
 end
