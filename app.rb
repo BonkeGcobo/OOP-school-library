@@ -25,12 +25,13 @@ class App
     input = ''
     while input != '7'
       menu_items
-      user_interactions
+      input = gets.chomp
+      user_interactions(input)
     end
   end
 
-  def user_interactions
-    interactions
+  def user_interactions(input)
+    interactions(input)
   end
 
   def create_person
