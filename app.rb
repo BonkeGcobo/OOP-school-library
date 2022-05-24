@@ -60,8 +60,6 @@ class App
 
   def list_rentals
     puts 'Enter the person ID:'
-    id = gets.chomp
-    puts 'Rentals:'
-    handle_list(@rentals, id)
+    rental_list
   end
 end
