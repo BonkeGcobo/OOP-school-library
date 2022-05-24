@@ -6,6 +6,7 @@ require './main_inputs'
 require './handle_create'
 require './handle_list'
 require './display'
+
 class App
   attr_reader :people
 
@@ -24,23 +25,17 @@ class App
     input = ''
     while input != '7'
       menu_items
-      input = gets.chomp
-      user_interactions(input)
+      user_interactions
     end
   end
 
-  def user_interactions(client_input)
-    user_input(client_input)
+  def user_interactions
+  interactions
   end
 
   def create_person
     puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
-    num_input = gets.chomp
-    print 'Age: '
-    age = gets.chomp
-    print 'Name: '
-    name = gets.chomp
-    person_create(num_input, age, name)
+    person_create
     puts 'Person created successfully'
   end
 
@@ -59,11 +54,15 @@ class App
 
   def create_rental
     puts 'Select a book from the following list by number'
-    handle_list(@books)
+    @books.each_with_index do |book, index|
+        print "#{index}) Title: #{book.title} Author: #{book.author}", "\n"
+      end
     book = gets.chomp
 
     puts 'Select a person from the following list by number [not ID]'
-    handle_list(@people)
+    @people.each_with_index do |person, index|
+        puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.find_id}, Age: #{person.age}", "\n"
+    end
     person = gets.chomp
     print 'Date: '
     date = gets.chomp
