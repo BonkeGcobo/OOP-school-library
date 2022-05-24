@@ -12,8 +12,13 @@ module HandleCreate
     @books.push(book)
   end
 
-  def person_create(input, age, name)
-    case input
+  def person_create
+    num_input = gets.chomp
+    print 'Age: '
+    age = gets.chomp
+    print 'Name: '
+    name = gets.chomp
+    case num_input
     when '1'
       print 'Has parent permission [Y/N]: '
       permission_input = gets.chomp.downcase
