@@ -18,8 +18,10 @@ class App
   include Data
 
   def initialize
+    @book_storage = retrieve
+    puts retrieve
     @people = []
-    @books = []
+    @books = @book_storage
     @rentals = []
   end
 
