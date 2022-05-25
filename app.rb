@@ -19,8 +19,8 @@ class App
 
   def initialize
     @book_storage = retrieve
-    puts retrieve
-    @people = []
+    @person_storage = retrieve_person
+    @people = @person_storage
     @books = @book_storage
     @rentals = []
   end
