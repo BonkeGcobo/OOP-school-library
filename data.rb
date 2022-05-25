@@ -10,7 +10,8 @@ module Data
       file_path = IO.sysopen("./#{string_list}.json",'w+')
       list_add = IO.new(file_path)
       list.each{ |data|
-        json = JSON.generate(data)
+        hash = {"title":data.title, "author": data.author}
+        json = JSON.generate(hash)
         list_add.puts(json)
       }
     end
@@ -24,8 +25,10 @@ module Data
     file_data = file.readlines.map(&:chomp)
     file_data.each {
       |data| 
-      parseData = JSON.parse(data, object_class: Book)
-      book.push(parseData);
+      parseData = JSON.parse(data)
+
+      make_book = Book.new(parseData["title"],parseData["author"])
+      book.push(make_book);
       #puts parseData.class
     }
     book
