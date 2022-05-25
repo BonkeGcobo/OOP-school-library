@@ -1,4 +1,4 @@
-require './book.rb'
+require './book'
 require 'json'
 
 module Data
@@ -18,19 +18,29 @@ module Data
   end
 
   def save_rental(list)
+    arr = []
     if(list ==[])
       puts "No rental data"
   
     else
-      file_path = IO.sysopen("./rental.json",'w+')
-      list_add = IO.new(file_path)
-      list.each{ |data|
-        book_hash = {"title": data.book.title, "author": data.book.author}
-        person_hash = {"age": data.person.age, "name": data.person.name}
-        hash = {"ID": data.person.find_id, "date":data.date, "book": book_hash, "person": person_hash}
-        json = JSON.generate(hash)
-        list_add.puts(json)
-      }
+      # file_path = IO.sysopen("./rental.json",'w+')
+      # list_add = IO.new(file_path)
+      # list.each{ |data|
+      #   book_hash = {"title": data.book.title, "author": data.book.author}
+      #   person_hash = {"age": data.person.age, "name": data.person.name}
+      #   hash = {"ID": data.person.find_id, "date":data.date, "book": book_hash, "person": person_hash}
+      #   json = JSON.generate(hash)
+      #   list_add.puts(json)
+      # }
+      list.each do |rental|
+      arr.push({
+        ID: rental.person.find_id,
+        date: rental.date,
+        book: rental.book,
+        person: rental.person
+      })
+    end
+    File.write("./rental.json", JSON.generate(arr).to_s)
     end
 
 
@@ -95,21 +105,26 @@ module Data
    person
   end
 
-    def retrieve_rental
-     rental = []
+    def retrieve_rental(id)
+     rentals = []
      if(!File.zero?('./rental.json'))
-      file = File.open('./rental.json')
-      file_data = file.readlines.map(&:chomp)
-      file_data.each {
-        |data|
-        parseData = JSON.parse(data)
-        book = parseData["book"]
-        person = parseData["person"]
-        puts book
-        make_rental = Rental.new(parseData["date"], Book.new(book['title'], book['author']), Book.new(person["age"], person["name"]))
-        rental.push(make_rental);
-      }
+      # file = File.open('./rental.json')
+      # file_data = file.readlines.map(&:chomp)
+      # file_data.each {
+      #   |data|
+      #   parseData = JSON.parse(data)
+      #   book = parseData["book"]
+      #   person = parseData["person"]
+      #   puts book
+      #   make_rental = Rental.new(parseData["date"], Book.new(book['title'], book['author']), Book.new(person["age"], person["name"]))
+      #   rental.push(make_rental);
+      #   #if data.id.instance_of?id 
+        
+      # }
+      puts JSON.parse(File.read('./rental.json')).each do |rental|
+        rentals.push(Rental.new(rental["date"], rental["book"], rental["person"]))
+      end
+      rentals
      end
-    rental
   end
 end
