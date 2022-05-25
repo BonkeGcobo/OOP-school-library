@@ -20,9 +20,10 @@ class App
   def initialize
     @book_storage = retrieve
     @person_storage = retrieve_person
+
     @people = @person_storage
     @books = @book_storage
-    @rentals = []
+    @rentals = retrieve_rental
   end
 
   def run

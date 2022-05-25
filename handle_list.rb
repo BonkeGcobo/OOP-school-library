@@ -15,7 +15,7 @@ module HandleList
     id = gets.chomp
     puts 'Rentals:'
     @rentals.each do |rental|
-      puts "Data #{rental.date}, Book #{rental.book.title} by #{rental.book.author}" if rental.person.find_id == id.to_i
+      puts "Date #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
     end
   end
 end

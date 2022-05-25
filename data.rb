@@ -25,7 +25,9 @@ module Data
       file_path = IO.sysopen("./rental.json",'w+')
       list_add = IO.new(file_path)
       list.each{ |data|
-        hash = {"date":data.date, "book": data.book, "person": data.person}
+        book_hash = {"title": data.book.title, "author": data.book.author}
+        person_hash = {"age": data.person.age, "name": data.person.name}
+        hash = {"ID": data.person.find_id, "date":data.date, "book": book_hash, "person": person_hash}
         json = JSON.generate(hash)
         list_add.puts(json)
       }
@@ -94,17 +96,20 @@ module Data
   end
 
     def retrieve_rental
-      rental = []
-      if(File.zero?('./rental.json'))
-    file = File.open('./rental.json')
-    file_data = file.readlines.map(&:chomp)
-    file_data.each {
-      |data| 
-      parseData = JSON.parse(data)
-      make_rental = Rental.new(parseData["book"],parseData["person"])
-      rental.push(make_rental);
-    }
-  end
+     rental = []
+     if(!File.zero?('./rental.json'))
+      file = File.open('./rental.json')
+      file_data = file.readlines.map(&:chomp)
+      file_data.each {
+        |data|
+        parseData = JSON.parse(data)
+        book = parseData["book"]
+        person = parseData["person"]
+        puts book
+        make_rental = Rental.new(parseData["date"], Book.new(book['title'], book['author']), Book.new(person["age"], person["name"]))
+        rental.push(make_rental);
+      }
+     end
     rental
   end
 end
