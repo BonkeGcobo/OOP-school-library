@@ -10,6 +10,13 @@ class Book
     @rentals = []
   end
 
+  def create_hash
+    hash = {}
+    hash["title"] = @title
+    hash["author"] = @author
+    hash
+  end
+
   def add_rental(person, date)
     rental = Rental.new(date, self, person)
     @rentals.push(rental)

@@ -9,7 +9,7 @@ module HandleCreate
     print 'Author: '
     author = gets.chomp
     book = Book.new(title, author)
-    @books.push(book)
+    @books.push(book.create_hash)
   end
 
   def person_create
