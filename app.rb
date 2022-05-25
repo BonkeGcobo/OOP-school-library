@@ -32,9 +32,9 @@ class App
       input = gets.chomp
       user_interactions(input)
       if(input =='7')
-        save_data(@books,'book')
-        save_data(@rentals, 'rental')
-        save_data(@people, 'people')
+        save_book(@books)
+        save_rental(@rentals)
+        save_person(@people)
       end
     end
   end

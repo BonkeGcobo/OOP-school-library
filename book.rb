@@ -14,4 +14,11 @@ class Book
     rental = Rental.new(date, self, person)
     @rentals.push(rental)
   end
+  
+  def make_hash
+    hash = {}
+    hash["title"] =@title
+    hash["author"] =@author
+    hash
+  end
 end
