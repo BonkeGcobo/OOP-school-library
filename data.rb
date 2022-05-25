@@ -67,4 +67,30 @@ module Data
     }
     book
   end
+
+  def retrieve_person
+    person = []
+    file = File.open('person.json')
+    file_data = file.readlines.map(&:chomp)
+    file_data.each {
+      |data| 
+      parseData = JSON.parse(data)
+      make_person = Person.new(parseData["age"],parseData["name"])
+      person.push(make_person);
+    }
+    person
+  end
+
+    def retrieve_rental
+    rental = []
+    file = File.open('rental.json')
+    file_data = file.readlines.map(&:chomp)
+    file_data.each {
+      |data| 
+      parseData = JSON.parse(data)
+      make_rental = Rental.new(parseData["book"],parseData["person"])
+      rental.push(make_rental);
+    }
+    person
+  end
 end
