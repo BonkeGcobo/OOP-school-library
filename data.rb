@@ -19,21 +19,14 @@ module Data
   
   def retrieve
     book = []
-    #book_file = IO.sysopen('./book.json','r')
-    #list_data = IO.new(book_file)
     file = File.open('book.json')
     file_data = file.readlines.map(&:chomp)
     file_data.each {
       |data| 
       parseData = JSON.parse(data)
-
       make_book = Book.new(parseData["title"],parseData["author"])
       book.push(make_book);
-      #puts parseData.class
     }
     book
   end
 end
-
-#data = Data.new
-#puts data.retrieve
