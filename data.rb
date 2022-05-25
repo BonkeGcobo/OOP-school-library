@@ -36,19 +36,20 @@ module Data
 
   def save_person(list)
     if(list ==[])
-      puts "No rental data"
-  
+      puts "No persom data"
     else
       file_path = IO.sysopen("./person.json",'w+')
       list_add = IO.new(file_path)
       list.each{ |data|
         if(data.class==Student)
           hash = {"age":data.age, "name": data.name}
+          json = JSON.generate(hash)
+          list_add.puts(json)
         elsif(data.class==Teacher)
-          hash = {"age": data.age, "name":data.name}
+          hash = {"age": data.age, "special":data.specialization, "name":data.name}
+          json = JSON.generate(hash)
+          list_add.puts(json)
         end
-        json = JSON.generate(hash)
-        list_add.puts(json)
       }
     end
 
@@ -58,8 +59,6 @@ module Data
   def retrieve
     book = []
     if(!File.zero?('./book.json'))
-      book
-    else 
       file = File.open('./book.json')
       file_data = file.readlines.map(&:chomp)
       file_data.each {
@@ -68,26 +67,30 @@ module Data
         make_book = Book.new(parseData["title"],parseData["author"])
         book.push(make_book);
       }
-  end
+    end
     book
   end
 
   def retrieve_person
     person = []
     if(!File.zero?('./person.json'))
-      person
-    else 
       file = File.open('./person.json')
       file_data = file.readlines.map(&:chomp)
       file_data.each {
         |data| 
         puts data
         parseData = JSON.parse(data)
-        make_person = Person.new(parseData["age"],parseData["name"])
-        person.push(make_person);
+        if(parseData.include?("special"))
+          make_person = Teacher.new(parseData["age"],parseData["special"],parseData["name"])
+          person.push(make_person);
+        else
+          make_person = Student.new(parseData["age"],nil,parseData["name"], parent_permission: true)
+          person.push(make_person);
+        end
       }
+      person
     end
-    person
+   person
   end
 
     def retrieve_rental
