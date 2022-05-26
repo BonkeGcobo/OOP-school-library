@@ -1,3 +1,4 @@
+require './data'
 module HandleList
   def handle_list(list_items)
     if list_items == @people

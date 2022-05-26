@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"ID":179,"date":"11","book":{"title":"Born A Crime","author":"Trevor Noah"},"person":{"age":"41","name":"Ouma"}}
+=======
+[{"ID":106,"date":"12/11/2022","book":"#<Book:0x0000560e875c55a8>","person":"#<Student:0x0000560e875c41d0>"}]
+>>>>>>> 0e00f46a32ecf14d3d8c2e12e7ae08207a37d6c5
