@@ -12,9 +12,9 @@ module HandleList
   end
 
   def rental_list
-    id = gets.chomp
     puts 'Rentals:'
     @rentals.each do |rental|
+      puts rental
       puts "Date #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
     end
   end

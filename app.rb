@@ -23,7 +23,7 @@ class App
 
     @people = @person_storage
     @books = @book_storage
-    @rentals = retrieve_rental
+    @rentals = []
   end
 
   def run
@@ -71,6 +71,8 @@ class App
 
   def list_rentals
     puts 'Enter the person ID:'
+    id=gets.chomp.to_i
+    @rentals=retrieve_rental(id)
     rental_list
   end
 end

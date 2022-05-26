@@ -20,7 +20,6 @@ module Data
   def save_rental(list)
     if(list ==[])
       puts "No rental data"
-  
     else
       file_path = IO.sysopen("./rental.json",'w+')
       list_add = IO.new(file_path)
@@ -95,21 +94,23 @@ module Data
    person
   end
 
-    def retrieve_rental
-     rental = []
-     if(!File.zero?('./rental.json'))
+  def retrieve_rental(id)
+    rental = []
+    if(!File.zero?('./rental.json'))
       file = File.open('./rental.json')
       file_data = file.readlines.map(&:chomp)
       file_data.each {
         |data|
         parseData = JSON.parse(data)
-        book = parseData["book"]
-        person = parseData["person"]
-        puts book
-        make_rental = Rental.new(parseData["date"], Book.new(book['title'], book['author']), Book.new(person["age"], person["name"]))
-        rental.push(make_rental);
+        book = parseData["book"]  #"book":{"title":"man","author":"men"}
+        person = parseData["person"] #"person":{"age":"41","name":"bb"}
+        if(id==parseData["ID"])
+          make_rental = Rental.new(parseData["date"], Book.new(book['title'], book['author']), Book.new(person["age"], person["name"]))
+          rental.push(make_rental);
+        end
       }
      end
     rental
   end
+
 end
