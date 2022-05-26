@@ -78,9 +78,8 @@ module Data
       file = File.open('./person.json')
       file_data = file.readlines.map(&:chomp)
       file_data.each do |data|
-        puts data
         parse_data = JSON.parse(data)
-        make_person = if parseData.include?('special')
+        make_person = if parse_data.include?('special')
                         Teacher.new(parse_data['age'], parse_data['special'], parse_data['name'])
                       else
                         Student.new(parse_data['age'], nil, parse_data['name'], parent_permission: true)

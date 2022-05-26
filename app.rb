@@ -27,6 +27,7 @@ class App
 
   def run
     input = ''
+    start_file
     while input != '7'
       menu_items
       input = gets.chomp
@@ -71,7 +72,7 @@ class App
   def list_rentals
     puts 'Enter the person ID:'
     id = gets.chomp.to_i
-    retrieve_rental(id)
+    @rentals = retrieve_rental(id)
     rental_list
   end
 end
