@@ -31,11 +31,10 @@ class App
       menu_items
       input = gets.chomp
       user_interactions(input)
-      if(input =='7')
-        save_book(@books)
-        save_rental(@rentals)
-        save_person(@people)
-      end
+      next unless input == '7'
+
+      save_book(@books)
+      save_person(@people)
     end
   end
 
@@ -65,18 +64,14 @@ class App
   def create_rental
     puts 'Select a book from the following list by number'
     rental_create
+    save_rental(@rentals)
     puts 'Rental Created Successfully'
   end
 
   def list_rentals
     puts 'Enter the person ID:'
-<<<<<<< HEAD
-    id=gets.chomp.to_i
-    @rentals=retrieve_rental(id)
-=======
-    id = gets.chomp
+    id = gets.chomp.to_i
     retrieve_rental(id)
->>>>>>> 0e00f46a32ecf14d3d8c2e12e7ae08207a37d6c5
     rental_list
   end
 end

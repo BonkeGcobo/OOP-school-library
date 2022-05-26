@@ -15,7 +15,6 @@ module HandleList
   def rental_list
     puts 'Rentals:'
     @rentals.each do |rental|
-      puts rental
       puts "Date #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
     end
   end
