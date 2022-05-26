@@ -5,7 +5,7 @@ describe Student do
     name = 'Ben'
     age = '14'
     classroom = nil
-    student = Student.new(age,classroom, name)
+    student = Student.new(age, classroom, name)
 
     it 'should be equal to student name' do
       expect(student.name).to eq 'Ben'
