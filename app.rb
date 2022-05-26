@@ -19,8 +19,8 @@ class App
 
   def initialize
     @book_storage = retrieve
-    puts retrieve
-    @people = []
+    @person_storage = retrieve_person
+    @people = @person_storage
     @books = @book_storage
     @rentals = []
   end
@@ -31,11 +31,10 @@ class App
       menu_items
       input = gets.chomp
       user_interactions(input)
-      if(input =='7')
-        save_data(@books,'book')
-        save_data(@rentals, 'rental')
-        save_data(@people, 'people')
-      end
+      next unless input == '7'
+
+      save_book(@books)
+      save_person(@people)
     end
   end
 
@@ -65,11 +64,14 @@ class App
   def create_rental
     puts 'Select a book from the following list by number'
     rental_create
+    save_rental(@rentals)
     puts 'Rental Created Successfully'
   end
 
   def list_rentals
     puts 'Enter the person ID:'
+    id = gets.chomp.to_i
+    retrieve_rental(id)
     rental_list
   end
 end

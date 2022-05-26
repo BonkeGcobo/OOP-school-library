@@ -1,3 +1,4 @@
+require './data'
 module HandleList
   def handle_list(list_items)
     if list_items == @people
@@ -12,10 +13,9 @@ module HandleList
   end
 
   def rental_list
-    id = gets.chomp
     puts 'Rentals:'
     @rentals.each do |rental|
-      puts "Data #{rental.date}, Book #{rental.book.title} by #{rental.book.author}" if rental.person.find_id == id.to_i
+      puts "Date #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
     end
   end
 end

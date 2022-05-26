@@ -8,4 +8,8 @@ class Rental
     @person = person
     person.rentals << self
   end
+
+  def pers
+    puts @date
+  end
 end
