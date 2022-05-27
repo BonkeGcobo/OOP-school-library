@@ -16,7 +16,7 @@ describe Student do
       expect(student.age).to eq '14'
     end
 
-    it 'Test if Student can use services' do
+    it 'Test if Student can use services, should return false' do
       expect(student.can_use_services?).to be false
     end
   end
