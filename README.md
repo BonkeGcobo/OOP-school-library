@@ -20,6 +20,12 @@ To get a local copy up and running follow these simple example steps.
 git clone https://github.com/BonkeGcobo/OOP-school-library.git
 cd OOP-SCHOOL-libray
 
+## Testing 
+- To Test the a class write this in command line for example test book class
+
+* rspec spec/book_spec.rb
+
+
 ## Authors
 
 👤 **Bonke Gcobo**
